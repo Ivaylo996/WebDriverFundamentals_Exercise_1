@@ -34,8 +34,8 @@ namespace SeleniumDocumentationTest
             Assert.AreEqual(headerToConfirm.Text, "Selenium Grid Components");
             Assert.AreEqual(_driver.Title, "Selenium Grid Components | Selenium");
 
-            IWebElement githunRepo = _driver.FindElement(By.XPath("//footer//*[contains(@class, 'fa-github')]"));
-            githunRepo.Click();
+            IWebElement githubRepo = _driver.FindElement(By.XPath("//footer//*[contains(@class, 'fa-github')]"));
+            githubRepo.Click();
 
             var newTabHandler = _driver.WindowHandles[1];
             _driver.SwitchTo().Window(newTabHandler);
