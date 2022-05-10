@@ -5,14 +5,14 @@ using WebDriverManager;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
-namespace WebDriverFundamentals_Exercise_1
+namespace SeleniumDocumentationTest
 {
     public class Tests
     {
         IWebDriver _driver;
 
         [SetUp]
-        public void startBrowser()
+        public void StartBrowser()
         {
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             _driver = new ChromeDriver();
@@ -23,7 +23,6 @@ namespace WebDriverFundamentals_Exercise_1
         [Test]
         public void NavigatedToDifferentTabs_When_FindingElementsByXPath()
         {
-            var expectedPageTitle = @"GitHub - SeleniumHQ/selenium: A browser automation framework and ecosystem.";
             IWebElement gridOptionFromMenu = _driver.FindElement(By.XPath("//a[@id='m-documentationgrid']"));
             gridOptionFromMenu.Click();
 
@@ -42,11 +41,11 @@ namespace WebDriverFundamentals_Exercise_1
             _driver.SwitchTo().Window(newTabHandler);
             var actualPageTitle = _driver.Title;
 
-            Assert.AreEqual(actualPageTitle, expectedPageTitle);
+            Assert.AreEqual(actualPageTitle, @"GitHub - SeleniumHQ/selenium: A browser automation framework and ecosystem.");
         }
 
         [TearDown]
-        public void closeBrowser()
+        public void TestCleanUp()
         {
             _driver.Quit();
         }
