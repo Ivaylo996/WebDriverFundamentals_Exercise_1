@@ -1,18 +1,18 @@
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
-using WebDriverManager;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
 
 namespace SeleniumDocumentationTest
 {
-    public class Tests
+    public class SeleniumDocumentationTest
     {
         IWebDriver _driver;
 
         [SetUp]
-        public void StartBrowser()
+        public void TestInit()
         {
             new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             _driver = new ChromeDriver();
@@ -31,8 +31,8 @@ namespace SeleniumDocumentationTest
 
             IWebElement headerToConfirm = _driver.FindElement(By.XPath("//main//*[text()='Selenium Grid Components']"));
 
-            Assert.AreEqual(headerToConfirm.Text, "Selenium Grid Components");
-            Assert.AreEqual(_driver.Title, "Selenium Grid Components | Selenium");
+            Assert.AreEqual("Selenium Grid Components", headerToConfirm.Text);
+            Assert.AreEqual("Selenium Grid Components | Selenium", _driver.Title);
 
             IWebElement githubRepo = _driver.FindElement(By.XPath("//footer//*[contains(@class, 'fa-github')]"));
             githubRepo.Click();
@@ -41,7 +41,7 @@ namespace SeleniumDocumentationTest
             _driver.SwitchTo().Window(newTabHandler);
             var actualPageTitle = _driver.Title;
 
-            Assert.AreEqual(actualPageTitle, @"GitHub - SeleniumHQ/selenium: A browser automation framework and ecosystem.");
+            Assert.AreEqual(@"GitHub - SeleniumHQ/selenium: A browser automation framework and ecosystem.", actualPageTitle);
         }
 
         [TearDown]
