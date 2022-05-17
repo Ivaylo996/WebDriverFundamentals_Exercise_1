@@ -5,9 +5,9 @@ using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
 
-namespace SeleniumDocumentationTest
+namespace SeleniumDocumentation
 {
-    public class SeleniumDocumentationTest
+    public class SeleniumDocumentationTests
     {
         IWebDriver _driver;
 
